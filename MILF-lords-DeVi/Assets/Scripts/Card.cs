@@ -35,9 +35,15 @@ namespace Deck {
             Debug.Log("Colisiona");
             if(collision.gameObject.layer == LayerMask.NameToLayer("Tablero"))
             {
+                Summon();
                 Invocar(invocacion);
                 Destroy(gameObject);
             }
+        }
+
+        private IEnumerator Summon()
+        {
+            yield return new WaitForSeconds(1);
         }
     }
 }
