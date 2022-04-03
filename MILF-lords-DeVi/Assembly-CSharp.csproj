@@ -53,9 +53,11 @@
     <UnityVersion>2020.3.21f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\MonsterBehaviour.cs" />
     <Compile Include="Assets\Scripts\Card.cs" />
     <Compile Include="Assets\Scripts\Grabber.cs" />
-    <Compile Include="Assets\Scripts\MonsterBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Player1.cs" />
+    <Compile Include="Assets\Scripts\MonsterDC.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
