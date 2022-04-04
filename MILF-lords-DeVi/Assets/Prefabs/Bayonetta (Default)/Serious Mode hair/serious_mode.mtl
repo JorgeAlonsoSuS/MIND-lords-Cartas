@@ -1,0 +1,61 @@
+# Blender MTL File: 'None'
+# Material Count: 5
+
+newmtl bayomat0
+Ns -1.960784
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd hair.png
+
+newmtl bayomat1
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd hair.png
+
+newmtl bayomat2
+Ns -1.960784
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd chain.png
+map_Ka chain_bump.png
+map_Disp chain_bump.png
+map_Ke chain_bump.png
+
+newmtl bayomat3
+Ns -1.960784
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd big_chains.png
+map_Ka big_chains_bump.png
+map_Disp big_chains_bump.png
+map_Ke big_chains_bump.png
+
+newmtl bayomat4
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd pendants.png
+map_Ka pendants_bump.png
+map_Disp pendants_bump.png
+map_Ke pendants_bump.png

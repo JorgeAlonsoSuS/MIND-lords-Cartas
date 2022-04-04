@@ -1,0 +1,11 @@
+Bayonetta (Default)
+Game: Bayonetta
+© 2009 Sega / Platinum Games
+
+Ripped by Mystie from The VG Resource. Please credit her if used.
+
+Ripper's notes: Finally, after months and months of analysis and trial-and-error, I finally got this model done, and working like how it should. Now that I know what I'm doing, I should be able to get the other character models done a lot quicker.
+
+OTHER NOTES:
+* A few of the .dae files may need to be re-textured.
+* You will find two versions of the model: One named "bayo_default", and the other named "bayo_default_shadow_meshes". The "shadow_meshes" one contains the meshes that are made invisible in-game and reflected in her shadow.

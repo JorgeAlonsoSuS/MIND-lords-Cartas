@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9148547929366619280}
   - component: {fileID: 7851954781595579030}
   - component: {fileID: 6078896697531339124}
-  - component: {fileID: -4523690135411725707}
   - component: {fileID: -3943020697308536264}
   m_Layer: 0
   m_Name: Carta
@@ -111,20 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b210bbcc801b743adfef6a8a9006b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invocacion: {fileID: 0}
-  health: 0
---- !u!114 &-4523690135411725707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6349067091363613427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6c9894899af66942ba45bc2e68c7b34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  invocation: {fileID: 0}
+  owner: {fileID: 0}
 --- !u!54 &-3943020697308536264
 Rigidbody:
   m_ObjectHideFlags: 0
