@@ -32,15 +32,16 @@ namespace Deck
             Debug.Log("Colisiona");
             if (collision.gameObject.layer == LayerMask.NameToLayer("Tablero"))
             {
-                Summon();
-                Invocar(invocation);
-                Destroy(gameObject);
+                StartCoroutine(Summon());
+                
             }
         }
 
         private IEnumerator Summon()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds( 0.25f);
+            Invocar(invocation);
+            Destroy(gameObject);
         }
     }
 }

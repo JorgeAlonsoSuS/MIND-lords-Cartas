@@ -10,8 +10,6 @@ namespace Deck
         [SerializeField]
         private GameObject monster;
         [SerializeField]
-        private MonsterBehaviour behaviour;
-        [SerializeField]
         private int initialHealth = 10;
         [SerializeField]
         private int baseDamage = 5;

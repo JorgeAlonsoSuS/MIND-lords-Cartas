@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2615d21905ec0498028a1d0c98ec47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monters: {fileID: 11400000, guid: abe170a81bbfe36438ca4cd2b3eb10fd, type: 2}
+  monters: {fileID: 0}
   players:
   - {fileID: 1635626719}
 --- !u!4 &258110204

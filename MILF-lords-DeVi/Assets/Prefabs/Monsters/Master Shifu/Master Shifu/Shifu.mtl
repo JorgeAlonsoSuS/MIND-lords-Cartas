@@ -1,0 +1,28 @@
+# Blender MTL File: 'Shifu.blend'
+# Material Count: 2
+
+newmtl Shifu
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Shifu.png
+map_Ks Shifu Specular.png
+map_Ke Shifu Normal Map.png
+map_Disp Shifu Normal Map.png
+map_Ns Shifu Specular.png
+map_Ka Shifu Normal Map.png
+
+newmtl Shifu_Eye
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Shifu Eye.png
+map_Ke Shifu Eye.png
