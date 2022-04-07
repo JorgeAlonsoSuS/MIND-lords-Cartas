@@ -11,6 +11,9 @@ namespace Deck
         private List<MonsterDC> gameMonster;
         [SerializeField]
         private int cardsToDraft;
+        [SerializeField]
+        private GameObject prefabCarta;
+
         private List<Card> deckCards = new List<Card>();
         private List<int> cardsSelected = new List<int>();
         void Awake()
@@ -19,28 +22,33 @@ namespace Deck
             if (cardsToDraft > gameMonster.Count) cardsToDraft = gameMonster.Count;
             //Debug.Log(cardsToDraft);
             cardDraft();
+            cardSpawn();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
         public void cardDraft()
         {
             for(int i = 0; i<cardsToDraft;)
             {
                 int num =Random.Range(0, gameMonster.Count);
-                if (AddCard(num))
+                if (CanAddCard(num))
                 {
-                    AddCarta(gameMonster[num], deckCards);
+                    AddCarta(num, deckCards);
                     cardsSelected.Add(num);
-                    Debug.Log(deckCards.Count);
+                    Debug.Log(gameMonster[num].GetNombre());
                     i++;
                 }
             }
         }
-        public bool AddCard(int num)
+        public void cardSpawn()
+        {
+            for(int i=0; i<deckCards.Count;i++) {
+                GameObject carta = Instantiate(deckCards[i].GetCard());
+                Vector3 v = new Vector3(transform.position.x, transform.position.y + 0.29f, transform.position.z);
+                carta.transform.position = v;
+            }
+        }
+        public bool CanAddCard(int num)
         {
             for(int i=0; i < cardsSelected.Count; i++)
             {
@@ -48,17 +56,19 @@ namespace Deck
             }
             return true;
         }
-        public void AddCarta(MonsterDC prefab, List<Card> deckCards)
+        public void AddCarta(int index, List<Card> deckCards)
         {
             Card carta = new Card();
-            carta.SetInvocation(prefab.GetPrefab());
+            carta.SetInvocation(gameMonster[index].GetPrefab());
+            Debug.Log(carta.GetMonster());
             carta.SetOwner(GetComponent<Player>());
+            carta.SetPrefab(prefabCarta);
             deckCards.Add(carta);
         }
         public void AddMonster(GameObject monster)
         {
             invocations.Add(monster);
-            Debug.Log(invocations.Count);
+            Debug.Log("Invocations:"+invocations.Count);
         }
     }
 }

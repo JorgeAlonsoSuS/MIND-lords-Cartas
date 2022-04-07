@@ -411,6 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMonster: []
   cardsToDraft: 2
+  prefabCarta: {fileID: 0}
 --- !u!64 &873166682
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -499,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 873166680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.11, y: 0.29, z: 14.21}
-  m_LocalScale: {x: 9.1131, y: 0.5485, z: 3.0768}
+  m_LocalScale: {x: 9.1131, y: 0.5, z: 3.0768}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -849,7 +850,7 @@ Transform:
   m_GameObject: {fileID: 1635626713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.11, y: 0.29, z: -13.62}
-  m_LocalScale: {x: 9.1131, y: 0.5485, z: 3.0768}
+  m_LocalScale: {x: 9.1131, y: 0.5, z: 3.0768}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -900,6 +901,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a6480cf79d5cb784082d75a01a7c6a7e, type: 2}
   - {fileID: 11400000, guid: cde18d44bb00b3a41b9883c5d715d12c, type: 2}
   cardsToDraft: 4
+  prefabCarta: {fileID: 6349067091363613427, guid: 82d4b48bb070d1f4f908710123e7e859, type: 3}
 --- !u!1001 &1946015463
 PrefabInstance:
   m_ObjectHideFlags: 0

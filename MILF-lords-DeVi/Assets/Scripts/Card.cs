@@ -8,23 +8,33 @@ namespace Deck
     {
         private GameObject invocation;
         private Player owner;
-        private Rigidbody card;
+        private GameObject card;
 
 
         private void Awake()
         {
-            card = GetComponent<Rigidbody>();
             if (owner == null)
                 owner = GameObject.Find("Player1").GetComponent<Player>();
         }
         public void SetOwner(Player p)
         {
-            if(p!=null) owner = p;
+            owner = p;
         }
         public void SetInvocation(GameObject monster)
         {
-            if(monster!=null)
             invocation = monster;
+        }
+        public GameObject GetMonster()
+        {
+            return invocation;
+        }
+        public void SetPrefab(GameObject body)
+        {
+            card = body;
+        }
+        public GameObject GetCard()
+        {
+            return card;
         }
         private void Invocar(GameObject invocacion)
         {
@@ -45,7 +55,7 @@ namespace Deck
         {
             yield return new WaitForSeconds( 0.25f);
             Invocar(invocation);
-            Destroy(gameObject);
+            Destroy(card);
         }
     }
 }
