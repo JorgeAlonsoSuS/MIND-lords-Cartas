@@ -6,10 +6,7 @@ namespace Deck
 {
     public class Card : MonoBehaviour
     {
-        [SerializeField]
         private GameObject invocation;
-
-        [SerializeField]
         private Player owner;
         private Rigidbody card;
 
@@ -20,20 +17,27 @@ namespace Deck
             if (owner == null)
                 owner = GameObject.Find("Player1").GetComponent<Player>();
         }
-
+        public void SetOwner(Player p)
+        {
+            if(p!=null) owner = p;
+        }
+        public void SetInvocation(GameObject monster)
+        {
+            if(monster!=null)
+            invocation = monster;
+        }
         private void Invocar(GameObject invocacion)
         {
             var creature = Instantiate(invocacion);
             owner.AddMonster(creature);
             creature.transform.position = card.transform.position;
         }
-        public void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision collision)
         {
             Debug.Log("Colisiona");
             if (collision.gameObject.layer == LayerMask.NameToLayer("Tablero"))
             {
                 StartCoroutine(Summon());
-                
             }
         }
 

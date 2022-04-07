@@ -8,12 +8,30 @@ namespace Deck
     public class MonsterDC : ScriptableObject
     {
         [SerializeField]
+        private string nombre;
+        [SerializeField]
         private GameObject monster;
         [SerializeField]
         private int initialHealth = 10;
         [SerializeField]
         private int baseDamage = 5;
 
+        public int GetBaseDamage()
+        {
+            return baseDamage;
+        }
+        public int GetInitialHealth()
+        {
+            return initialHealth;
+        }
+        public string GetNombre()
+        {
+            return nombre;
+        }
+        public GameObject GetPrefab()
+        {
+            return monster;
+        }
     }
 }
 

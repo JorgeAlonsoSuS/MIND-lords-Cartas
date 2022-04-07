@@ -8,16 +8,17 @@ namespace Deck
     {
         private List<GameObject> invocations;
         [SerializeField]
-        private List<GameObject> gameCards;
+        private List<MonsterDC> gameMonster;
         [SerializeField]
         private int cardsToDraft;
-        private List<GameObject> deckCards;
+        private List<Card> deckCards;
         private int[] cardsSelected;
         void Awake()
         {
             invocations = new List<GameObject>();
-            if (cardsToDraft > gameCards.Count) cardsToDraft = gameCards.Count;
+            if (cardsToDraft > gameMonster.Count) cardsToDraft = gameMonster.Count;
             Debug.Log(cardsToDraft);
+            cardDraft();
         }
 
         // Update is called once per frame
@@ -29,10 +30,10 @@ namespace Deck
         {
             for(int i = 0; i<cardsToDraft;)
             {
-                int num =Random.Range(0, gameCards.Count);
+                int num =Random.Range(0, gameMonster.Count);
                 if (AddCard(num))
                 {
-                    deckCards.Add(gameCards[num]);
+                    AddCarta(gameMonster[num], deckCards);
                     Debug.Log(deckCards.Count);
                     i++;
                 }
@@ -46,12 +47,17 @@ namespace Deck
             }
             return true;
         }
+        public void AddCarta(MonsterDC prefab, List<Card> deckCards)
+        {
+            Card carta = new Card();
+            carta.SetInvocation(prefab.GetPrefab());
+            carta.SetOwner(GetComponent<Player>());
+            deckCards.Add(carta);
+        }
         public void AddMonster(GameObject monster)
         {
             invocations.Add(monster);
             Debug.Log(invocations.Count);
         }
     }
-
 }
-

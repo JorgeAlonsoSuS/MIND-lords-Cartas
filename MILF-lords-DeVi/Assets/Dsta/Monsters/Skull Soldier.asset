@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbddd0bbbbd46ce4291281b737910925, type: 3}
   m_Name: Skull Soldier
   m_EditorClassIdentifier: 
-  monster: {fileID: 0}
+  nombre: Skull-Soldier
+  monster: {fileID: 919132149155446097, guid: f3cf93147875ae74ab580bb285e60040, type: 3}
   initialHealth: 10
   baseDamage: 5

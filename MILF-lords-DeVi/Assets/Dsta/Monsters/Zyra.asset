@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbddd0bbbbd46ce4291281b737910925, type: 3}
   m_Name: Zyra
   m_EditorClassIdentifier: 
-  monster: {fileID: 0}
+  nombre: Zyra
+  monster: {fileID: 919132149155446097, guid: e3672c99c472a2647a4f2592fd25615a, type: 3}
   initialHealth: 10
   baseDamage: 5
