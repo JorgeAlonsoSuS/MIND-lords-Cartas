@@ -11,13 +11,13 @@ namespace Deck
         private List<MonsterDC> gameMonster;
         [SerializeField]
         private int cardsToDraft;
-        private List<Card> deckCards;
-        private int[] cardsSelected;
+        private List<Card> deckCards = new List<Card>();
+        private List<int> cardsSelected = new List<int>();
         void Awake()
         {
             invocations = new List<GameObject>();
             if (cardsToDraft > gameMonster.Count) cardsToDraft = gameMonster.Count;
-            Debug.Log(cardsToDraft);
+            //Debug.Log(cardsToDraft);
             cardDraft();
         }
 
@@ -34,6 +34,7 @@ namespace Deck
                 if (AddCard(num))
                 {
                     AddCarta(gameMonster[num], deckCards);
+                    cardsSelected.Add(num);
                     Debug.Log(deckCards.Count);
                     i++;
                 }
@@ -41,7 +42,7 @@ namespace Deck
         }
         public bool AddCard(int num)
         {
-            for(int i=0; i < cardsSelected.Length; i++)
+            for(int i=0; i < cardsSelected.Count; i++)
             {
                 if (num == cardsSelected[i]) return false;
             }
