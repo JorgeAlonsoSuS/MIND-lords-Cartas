@@ -15,6 +15,7 @@ namespace Deck
 
         private List<MonsterDC> invocations;
         private List<int> cardsSelected = new List<int>();
+        private int numCart = 0;
         Card carta;
         void Awake()
         {
@@ -48,8 +49,8 @@ namespace Deck
         public void AddCarta(int index)
         {
             Vector3 v = new Vector3(transform.position.x, transform.position.y + 0.29f, transform.position.z);
-            Debug.Log("NUMERO MANDADO:"+index);
-            carta = new Card(card, gameMonster[index], v, GetComponent<Player>()); 
+            carta = new Card(card, gameMonster[index], v, GetComponent<Player>(), numCart);
+            numCart++;
         }
         public void AddMonster(MonsterDC monster)
         {

@@ -6,17 +6,18 @@ namespace Deck
 {
     public class Card : MonoBehaviour
     {
-        public static List<MonsterDC> invocations;
-        public static int pos=0;
-        private MonsterDC invocation = new MonsterDC();
+        private static List<MonsterDC> invocations = new List<MonsterDC>();
+        private static int pos=0;
+        private int cardIndex;
         private Player owner;
-        private GameObject card;
-        public Card(GameObject card, MonsterDC monster, Vector3 position, Player pOwner)
+        private GameObject cardObject;
+        public Card(GameObject card, MonsterDC monster, Vector3 position, Player pOwner, int index)
         {
-            Instantiate(card);
             card.transform.position = position;
-            this.invocation = monster;
-            this.owner = pOwner;
+            Debug.Log(monster);
+            invocations.Add(monster);
+            owner = pOwner;
+            cardObject = Instantiate(card);
         }
         private void OnCollisionEnter(Collision collision)
         {
@@ -29,8 +30,10 @@ namespace Deck
         private IEnumerator Summon()
         {
             yield return new WaitForSeconds( 0.25f);
-            invocation.Instantiate(card.transform);
-            Destroy(card);
+            Instantiate(invocations[pos].GetPrefab(), transform.position,transform.rotation);
+            pos++;
+            Destroy(this.gameObject);
+            Debug.Log("destruido");
         }
     }
 }
