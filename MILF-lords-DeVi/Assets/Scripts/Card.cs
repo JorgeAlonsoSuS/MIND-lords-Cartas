@@ -6,41 +6,17 @@ namespace Deck
 {
     public class Card : MonoBehaviour
     {
-        private GameObject invocation;
+        public static List<MonsterDC> invocations;
+        public static int pos=0;
+        private MonsterDC invocation = new MonsterDC();
         private Player owner;
         private GameObject card;
-
-
-        private void Awake()
+        public Card(GameObject card, MonsterDC monster, Vector3 position, Player pOwner)
         {
-            if (owner == null)
-                owner = GameObject.Find("Player1").GetComponent<Player>();
-        }
-        public void SetOwner(Player p)
-        {
-            owner = p;
-        }
-        public void SetInvocation(GameObject monster)
-        {
-            invocation = monster;
-        }
-        public GameObject GetMonster()
-        {
-            return invocation;
-        }
-        public void SetPrefab(GameObject body)
-        {
-            card = body;
-        }
-        public GameObject GetCard()
-        {
-            return card;
-        }
-        private void Invocar(GameObject invocacion)
-        {
-            var creature = Instantiate(invocacion);
-            owner.AddMonster(creature);
-            creature.transform.position = card.transform.position;
+            Instantiate(card);
+            card.transform.position = position;
+            this.invocation = monster;
+            this.owner = pOwner;
         }
         private void OnCollisionEnter(Collision collision)
         {
@@ -50,11 +26,10 @@ namespace Deck
                 StartCoroutine(Summon());
             }
         }
-
         private IEnumerator Summon()
         {
             yield return new WaitForSeconds( 0.25f);
-            Invocar(invocation);
+            invocation.Instantiate(card.transform);
             Destroy(card);
         }
     }

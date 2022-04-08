@@ -28,9 +28,9 @@ namespace Deck
         {
             return nombre;
         }
-        public GameObject GetPrefab()
+        public void Instantiate(Transform pos)
         {
-            return monster;
+            Instantiate(monster, pos);
         }
     }
 }
