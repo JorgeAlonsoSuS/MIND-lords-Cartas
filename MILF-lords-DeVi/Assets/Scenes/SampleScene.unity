@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2615d21905ec0498028a1d0c98ec47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monters: {fileID: 0}
+  monters: []
   players:
   - {fileID: 1635626719}
 --- !u!4 &258110204
@@ -409,9 +409,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efa8588266dace43b8140814993ad5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMonster: []
-  cardsToDraft: 2
-  card: {fileID: 0}
+  gameMonster:
+  - {fileID: 11400000, guid: aa6cacbdfd9c68640acc2b520668c533, type: 2}
+  - {fileID: 11400000, guid: eb16997af9306be49985852ad78e5ee5, type: 2}
+  - {fileID: 11400000, guid: abe170a81bbfe36438ca4cd2b3eb10fd, type: 2}
+  - {fileID: 11400000, guid: 6d0cd4cae8f912841aab7eb299d28219, type: 2}
+  - {fileID: 11400000, guid: 1a343aee9cf34d840a0a0675947b2c8d, type: 2}
+  - {fileID: 11400000, guid: 271758b84d9dd4f4eab835c5bafc2acb, type: 2}
+  - {fileID: 11400000, guid: a7c9a1ad3d978d348b8276573ee0e4ae, type: 2}
+  - {fileID: 11400000, guid: 832c8a60e037e274c89ed92db4773ea4, type: 2}
+  - {fileID: 11400000, guid: 7026cdc0e9aa5ce4e83f40a625bac07d, type: 2}
+  - {fileID: 11400000, guid: b1cd494d1c1d56b479cfeddf5f9063ea, type: 2}
+  - {fileID: 11400000, guid: 83390d62c6c4ea946b638a866f667c6b, type: 2}
+  - {fileID: 11400000, guid: 726e88226fe54af499c654d6831759b9, type: 2}
+  - {fileID: 11400000, guid: f4421f9fd4f0792408dc856505d81b73, type: 2}
+  - {fileID: 11400000, guid: a6480cf79d5cb784082d75a01a7c6a7e, type: 2}
+  - {fileID: 11400000, guid: 092728e426c9c814db4457a6f6508d5a, type: 2}
+  - {fileID: 11400000, guid: cde18d44bb00b3a41b9883c5d715d12c, type: 2}
+  cardsToDraft: 7
+  card: {fileID: 6349067091363613427, guid: 82d4b48bb070d1f4f908710123e7e859, type: 3}
 --- !u!64 &873166682
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -900,7 +916,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 092728e426c9c814db4457a6f6508d5a, type: 2}
   - {fileID: 11400000, guid: a6480cf79d5cb784082d75a01a7c6a7e, type: 2}
   - {fileID: 11400000, guid: cde18d44bb00b3a41b9883c5d715d12c, type: 2}
-  cardsToDraft: 5
+  cardsToDraft: 7
   card: {fileID: 6349067091363613427, guid: 82d4b48bb070d1f4f908710123e7e859, type: 3}
 --- !u!1001 &1946015463
 PrefabInstance:

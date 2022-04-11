@@ -8,7 +8,7 @@ namespace Deck
     {
 
         [SerializeField]
-        private MonsterDC monters;
+        private MonsterDC[] monters;
 
         [SerializeField]
         private Player[] players;

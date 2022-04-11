@@ -71,7 +71,6 @@ namespace Deck
             Vector3 worldMousePosNear = Camera.main.ScreenToWorldPoint(screenMousePosNear);
             RaycastHit hit;
             Physics.Raycast(worldMousePosNear, worldMousePosFar - worldMousePosNear, out hit);
-
             return hit;
         }
     }
