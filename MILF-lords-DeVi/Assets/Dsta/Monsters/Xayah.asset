@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbddd0bbbbd46ce4291281b737910925, type: 3}
   m_Name: Xayah
   m_EditorClassIdentifier: 
+  id: 15
   nombre: Xayah
   monster: {fileID: 919132149155446097, guid: 0042e07c1e5693343a790872f7ba455b, type: 3}
   initialHealth: 10

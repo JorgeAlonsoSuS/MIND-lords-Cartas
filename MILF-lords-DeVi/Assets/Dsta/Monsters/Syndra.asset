@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbddd0bbbbd46ce4291281b737910925, type: 3}
   m_Name: Syndra
   m_EditorClassIdentifier: 
+  id: 12
   nombre: Syndra
   monster: {fileID: 919132149155446097, guid: ae86ff5700e99394da97310f168fc258, type: 3}
   initialHealth: 10

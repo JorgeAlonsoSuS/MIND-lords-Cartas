@@ -13,49 +13,22 @@ namespace Deck
         [SerializeField]
         private GameObject card;
 
-        private List<MonsterDC> invocations;
-        private List<int> cardsSelected = new List<int>();
-        private int numCart = 0;
-        Card carta;
+
+        public int CardsToDraft => cardsToDraft;
+
+        public List<Card> Hand { get; private set; } = new List<Card>();
+
         void Awake()
         {
-            invocations = new List<MonsterDC>();
             if (cardsToDraft > gameMonster.Count) cardsToDraft = gameMonster.Count;
-            cardDraft();
+            
         }
+        public void AddCard(Card card)
+        {
+            Hand.Add(card);
 
-        
-        public void cardDraft()
-        {
-            for(int i = 0; i<cardsToDraft;)
-            {
-                int num =Random.Range(0, gameMonster.Count);
-                if (CanAddCard(num))
-                {
-                    AddCarta(num);
-                    cardsSelected.Add(num);
-                    i++;
-                }
-            }
-        }
-        public bool CanAddCard(int num)
-        {
-            for(int i=0; i < cardsSelected.Count; i++)
-            {
-                if (num == cardsSelected[i]) return false;
-            }
-            return true;
-        }
-        public void AddCarta(int index)
-        {
             Vector3 v = new Vector3(transform.position.x, transform.position.y + 0.29f, transform.position.z);
-            carta = new Card(card, gameMonster[index], v, GetComponent<Player>(), numCart);
-            numCart++;
-        }
-        public void AddMonster(MonsterDC monster)
-        {
-            invocations.Add(monster);
-            Debug.Log("Invocations:"+invocations.Count);
+            card.transform.position = v;
         }
     }
 }

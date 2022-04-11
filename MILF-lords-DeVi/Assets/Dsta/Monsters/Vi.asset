@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbddd0bbbbd46ce4291281b737910925, type: 3}
   m_Name: Vi
   m_EditorClassIdentifier: 
+  id: 14
   nombre: Vi
   monster: {fileID: 919132149155446097, guid: e1d2a5b59f8191043b308036e6637c56, type: 3}
   initialHealth: 10

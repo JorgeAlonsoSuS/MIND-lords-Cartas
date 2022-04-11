@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbddd0bbbbd46ce4291281b737910925, type: 3}
   m_Name: Catwoman Regime
   m_EditorClassIdentifier: 
+  id: 5
   nombre: Catwoman
   monster: {fileID: 919132149155446097, guid: 7bf23fba7deadce4ab9de3540d2a2356, type: 3}
   initialHealth: 10

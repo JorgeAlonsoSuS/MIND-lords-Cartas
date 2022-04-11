@@ -7,7 +7,7 @@ namespace Deck
         private GameObject selectedObject;
         private Vector3 initialPosition;
         private Quaternion initialRotation;
-
+        private int player;
         void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -26,7 +26,8 @@ namespace Deck
                         selectedObject = hit.collider.gameObject;
                         initialPosition = selectedObject.transform.position;
                         initialRotation = selectedObject.transform.rotation;
-
+                        if (selectedObject.transform.position.z < 0) player = 1;
+                        else player = 2;
                         Cursor.visible = false;
                     }
                 }
@@ -39,9 +40,14 @@ namespace Deck
                 {
                     Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(selectedObject.transform.position).z);
                     Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-                    if (worldPosition.x>-10 && worldPosition.x < 10 && worldPosition.z <=0 && worldPosition.z > -10)
+                    if (player==1 && worldPosition.x>-10 && worldPosition.x < 10 && worldPosition.z <=0 && worldPosition.z > -10)
                     {
                         selectedObject.transform.position = new Vector3(worldPosition.x, 0f, worldPosition.z);
+                    }
+                    else if (player == 2 && worldPosition.x > -10 && worldPosition.x < 10 && worldPosition.z >= 0 && worldPosition.z < 10)
+                    {
+                        selectedObject.transform.position = new Vector3(worldPosition.x, 0f, worldPosition.z);
+                        selectedObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                     }
                     else
                     {

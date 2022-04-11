@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbddd0bbbbd46ce4291281b737910925, type: 3}
   m_Name: Teba
   m_EditorClassIdentifier: 
+  id: 13
   nombre: teba
   monster: {fileID: 919132149155446097, guid: b1a4489ed8323ff43b26b82d56a79320, type: 3}
   initialHealth: 10
