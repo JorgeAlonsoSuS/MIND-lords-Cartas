@@ -9,14 +9,13 @@ namespace Deck
         [SerializeField]
         private Rigidbody monster;
         [SerializeField]
-        private int initialHealth = 10;
+        private int health = 10;
         [SerializeField]
         private int baseDamage = 5;
-        private int health;
+        private MonsterDC lockedEnemy;
         void Start()
         {
             monster = GetComponent<Rigidbody>();
-            health = initialHealth;
         }
 
         // Update is called once per frame
@@ -41,5 +40,13 @@ namespace Deck
             }
 
         }
+        public void LockEnemy(MonsterDC monsterL)
+        {
+            if(lockedEnemy!=null) lockedEnemy = monsterL;
+        }
+        public void MoveToEnemy(MonsterDC monster)
+        {
+
+        } 
     }
 }

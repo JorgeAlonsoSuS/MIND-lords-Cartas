@@ -14,27 +14,21 @@ namespace Deck
         [SerializeField]
         private GameObject monster;
         [SerializeField]
-        private int initialHealth = 10;
+        private int health = 10;
         [SerializeField]
         private int baseDamage = 5;
 
-        public int Id => id;
+        private MonsterDC lockedMonster;
 
-        public int GetBaseDamage()
+        public int Id => id;
+        public MonsterDC LockedMonster => lockedMonster;
+        public int BaseDmage => BaseDmage;
+        public int Health =>health;
+        public string Nombre=>nombre;
+        public GameObject Prefab => monster;
+        public void LockMonster(MonsterDC monster)
         {
-            return baseDamage;
-        }
-        public int GetInitialHealth()
-        {
-            return initialHealth;
-        }
-        public string GetNombre()
-        {
-            return nombre;
-        }
-        public GameObject GetPrefab()
-        {
-            return monster;
+            lockedMonster = monster;
         }
     }
 }

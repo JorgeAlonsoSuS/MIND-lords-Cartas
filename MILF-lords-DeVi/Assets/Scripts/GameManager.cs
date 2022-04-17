@@ -17,6 +17,7 @@ namespace Deck
 
         [SerializeField]
         private CardFactory cardFactory;
+        private bool check = false;
 
         private void Awake()
         {
@@ -24,6 +25,30 @@ namespace Deck
             DrawCards(players[1]);
         }
 
+        private void Update()
+        {
+            if (!check)
+            {
+                LockMonsters();
+            }
+            else
+            {
+                StartCoroutine(CheckAgain());
+            }
+        }
+        private void LockMonsters()
+        {
+            for (int j=0; j <players[0].monsterInGame.Count; j++){
+                if (players[0].monsterInGame[j].LockedMonster == null)
+                {
+                    int pos = 0;
+                    for(int i = 0; i< players[1].monsterInGame.Count; i++)
+                    {
+                        //NO SE COMO SACAR LA POSICION.   calcularDistancia(players[1].monsterInGame[i].G)
+                    }
+                }
+            }
+        }
         private void DrawCards(Player player)
         {
             for (int i = 0; i < player.CardsToDraft; i++)
@@ -33,6 +58,13 @@ namespace Deck
                 player.AddCard(newCard);
             }
         }
-
+        private IEnumerator CheckAgain()
+        {
+            yield return new WaitForSeconds(0.25f);
+        }
+        private float calcularDistancia(Vector3 originPosition, Vector3 destinyPosition)
+        {
+            return Vector3.Distance(originPosition, destinyPosition);
+        }
     }
 }

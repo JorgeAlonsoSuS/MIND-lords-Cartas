@@ -17,6 +17,7 @@ namespace Deck
         public int CardsToDraft => cardsToDraft;
 
         public List<Card> Hand { get; private set; } = new List<Card>();
+        public List<MonsterDC> monsterInGame { get; private set; } = new List<MonsterDC>();
 
         void Awake()
         {
@@ -26,7 +27,6 @@ namespace Deck
         public void AddCard(Card card)
         {
             Hand.Add(card);
-
             Vector3 v = new Vector3(transform.position.x, transform.position.y + 0.29f, transform.position.z);
             card.transform.position = v;
         }

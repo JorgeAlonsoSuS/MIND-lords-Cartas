@@ -33,7 +33,7 @@ namespace Deck
         private IEnumerator Summon()
         {
             yield return new WaitForSeconds( 0.25f);
-            Instantiate(monsterData.GetPrefab(), transform.position,transform.rotation);
+            Instantiate(monsterData.Prefab, transform.position,transform.rotation);
             Destroy(this.gameObject);
         }
     }
