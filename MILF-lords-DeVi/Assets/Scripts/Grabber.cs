@@ -4,6 +4,10 @@ namespace Deck
 {
     public class Grabber : MonoBehaviour
     {
+
+        [SerializeField]
+        private Camera gameCamera;
+
         private GameObject selectedObject;
         private Vector3 initialPosition;
         private Quaternion initialRotation;
@@ -38,8 +42,8 @@ namespace Deck
             {
                 if (selectedObject != null)
                 {
-                    Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(selectedObject.transform.position).z);
-                    Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
+                    Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameCamera.WorldToScreenPoint(selectedObject.transform.position).z);
+                    Vector3 worldPosition = gameCamera.ScreenToWorldPoint(position);
                     if (player==1 && worldPosition.x>-10 && worldPosition.x < 10 && worldPosition.z <=0 && worldPosition.z > -10)
                     {
                         selectedObject.transform.position = new Vector3(worldPosition.x, 0f, worldPosition.z);
@@ -62,19 +66,19 @@ namespace Deck
 
             if (selectedObject != null)
             {
-                Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(selectedObject.transform.position).z);
-                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
+                Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameCamera.WorldToScreenPoint(selectedObject.transform.position).z);
+                Vector3 worldPosition = gameCamera.ScreenToWorldPoint(position);
                 selectedObject.transform.position = new Vector3(worldPosition.x, 1f, worldPosition.z);
             }
         }
 
         private RaycastHit CastRay()
         {
-            Vector3 screenMousePosFar = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.farClipPlane);
-            Vector3 screenMousePosNear = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane);
+            Vector3 screenMousePosFar = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameCamera.farClipPlane);
+            Vector3 screenMousePosNear = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameCamera.nearClipPlane);
 
-            Vector3 worldMousePosFar = Camera.main.ScreenToWorldPoint(screenMousePosFar);
-            Vector3 worldMousePosNear = Camera.main.ScreenToWorldPoint(screenMousePosNear);
+            Vector3 worldMousePosFar = gameCamera.ScreenToWorldPoint(screenMousePosFar);
+            Vector3 worldMousePosNear = gameCamera.ScreenToWorldPoint(screenMousePosNear);
             RaycastHit hit;
             Physics.Raycast(worldMousePosNear, worldMousePosFar - worldMousePosNear, out hit);
             return hit;
