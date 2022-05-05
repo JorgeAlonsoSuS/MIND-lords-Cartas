@@ -38,13 +38,15 @@ namespace Deck
         }
         private void LockMonsters()
         {
-            for (int j=0; j <players[0].monsterInGame.Count; j++){
-                if (players[0].monsterInGame[j].LockedMonster == null)
-                {
-                    int pos = 0;
-                    for(int i = 0; i< players[1].monsterInGame.Count; i++)
+            if (players[0].MonstersInGame.Count>0 && players[1].MonstersInGame.Count>0) {
+                for (int j = 0; j < players[0].MonstersInGame.Count; j++) {
+                    if (players[0].MonstersInGame[j].LockedMonster == null)
                     {
-                        //NO SE COMO SACAR LA POSICION.   calcularDistancia(players[1].monsterInGame[i].G)
+                        int pos = 0;
+                        for (int i = 0; i < players[1].MonstersInGame.Count; i++)
+                        {
+                            Debug.Log(calcularDistancia(players[1].MonstersInGame[j].transform.position, players[1].MonstersInGame[i].transform.position));
+                        }
                     }
                 }
             }

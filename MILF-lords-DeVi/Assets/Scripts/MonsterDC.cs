@@ -18,17 +18,11 @@ namespace Deck
         [SerializeField]
         private int baseDamage = 5;
 
-        private MonsterDC lockedMonster;
 
         public int Id => id;
-        public MonsterDC LockedMonster => lockedMonster;
         public int BaseDmage => BaseDmage;
         public int Health =>health;
         public string Nombre=>nombre;
         public GameObject Prefab => monster;
-        public void LockMonster(MonsterDC monster)
-        {
-            lockedMonster = monster;
-        }
     }
 }

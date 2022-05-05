@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,14 @@ namespace Deck
 {
     public class MonsterBehaviour : MonoBehaviour
     {
-        [SerializeField]
         private Rigidbody monster;
         [SerializeField]
         private int health = 10;
         [SerializeField]
         private int baseDamage = 5;
-        private MonsterDC lockedEnemy;
+        private Player owner;
+        private MonsterBehaviour lockedMonster =null;
+        public MonsterBehaviour LockedMonster => lockedMonster;
         void Start()
         {
             monster = GetComponent<Rigidbody>();
@@ -38,11 +40,16 @@ namespace Deck
             {
                 //Llamamos a la funcion attackCalculation y le hacemos daño al enemigo.
             }
-
         }
-        public void LockEnemy(MonsterDC monsterL)
+
+        internal void Init(Player owner)
         {
-            if(lockedEnemy!=null) lockedEnemy = monsterL;
+            this.owner = owner;
+        }
+
+        public void LockEnemy(MonsterBehaviour monsterL)
+        {
+            if(lockedMonster==null) lockedMonster = monsterL;
         }
         public void MoveToEnemy(MonsterDC monster)
         {

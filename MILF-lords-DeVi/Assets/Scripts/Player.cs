@@ -18,6 +18,7 @@ namespace Deck
 
         public List<Card> Hand { get; private set; } = new List<Card>();
         public List<MonsterDC> monsterInGame { get; private set; } = new List<MonsterDC>();
+        public List<MonsterBehaviour> MonstersInGame { get; private set; } = new List<MonsterBehaviour>();
 
         void Awake()
         {
@@ -29,6 +30,12 @@ namespace Deck
             Hand.Add(card);
             Vector3 v = new Vector3(transform.position.x, transform.position.y + 0.29f, transform.position.z);
             card.transform.position = v;
+            card.OnPlayed += Card_OnPlayed;
+        }
+
+        private void Card_OnPlayed(MonsterBehaviour obj)
+        {
+            MonstersInGame.Add(obj);
         }
     }
 }

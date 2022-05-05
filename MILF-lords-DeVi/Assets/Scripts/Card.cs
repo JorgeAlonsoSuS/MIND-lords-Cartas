@@ -7,6 +7,9 @@ namespace Deck
 {
     public class Card : MonoBehaviour
     {
+
+        public event Action<MonsterBehaviour> OnPlayed;
+
         private int cardIndex;
         private Player owner;
         private GameObject cardObject;
@@ -33,7 +36,15 @@ namespace Deck
         private IEnumerator Summon()
         {
             yield return new WaitForSeconds( 0.25f);
-            Instantiate(monsterData.Prefab, transform.position,transform.rotation);
+            var newMonsterGameObject = Instantiate(monsterData.Prefab, transform.position,transform.rotation);
+            MonsterBehaviour monsterBehaviour = newMonsterGameObject.GetComponent<MonsterBehaviour>();
+            Debug.Log(monsterBehaviour);
+            monsterBehaviour.Init(owner);
+            if (OnPlayed != null)
+            {
+                OnPlayed.Invoke(monsterBehaviour);
+                Debug.Log("Añadido");
+            }
             Destroy(this.gameObject);
         }
     }

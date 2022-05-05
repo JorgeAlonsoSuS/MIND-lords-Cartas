@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2426304953166339923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6853871709278047336}
+  - component: {fileID: 8631983618047882530}
+  - component: {fileID: 5111389300719554998}
+  m_Layer: 0
+  m_Name: default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6853871709278047336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426304953166339923}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6299951158103588144}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8631983618047882530
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426304953166339923}
+  m_Mesh: {fileID: -2432090755550338912, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+--- !u!23 &5111389300719554998
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426304953166339923}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 5179451712446390117, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 3747348236961315084, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -8369528532668058871, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -4909863745123516030, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 6687178646715260456, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -8895086204291660976, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -4172078975330395332, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 3875391987746773064, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 7541679481775706687, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -187442736198712704, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -2201866940534981410, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -2532823341081239684, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 5234332306764698612, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 1308092354982157942, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -277301611562701118, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 3854996422496489086, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -308788876703501423, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 2565420138069235790, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 4819694208863599982, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 4713048587141823551, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 300723019432133510, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 702310459326358650, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -5034911237051210444, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 7789410002022408597, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -1819236740414756070, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -8256450615986446473, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: 3730638837730788654, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  - {fileID: -2517449421482166857, guid: 5aadc96b46619d5479c1ad7db0356aeb, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6640061357349889930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6299951158103588144}
+  - component: {fileID: 413756188456804026}
+  m_Layer: 0
+  m_Name: bayo_default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6299951158103588144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640061357349889930}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.468598, y: -0.009840012, z: -6.999161}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6853871709278047336}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &413756188456804026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640061357349889930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c250969d23fee9349a25ab6795e77cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 0}
+  health: 10
+  baseDamage: 5
