@@ -29,27 +29,44 @@ namespace Deck
         {
             if (!check)
             {
-                LockMonsters();
+                if(players[0].MonstersInGame.Count>0) LockPlayer1();
+                if (players[1].MonstersInGame.Count > 0) LockPlayer2();
             }
             else
             {
                 StartCoroutine(CheckAgain());
             }
         }
-        private void LockMonsters()
+        private void LockPlayer1()
         {
-            if (players[0].MonstersInGame.Count>0 && players[1].MonstersInGame.Count>0) {
+            if (players[1].MonstersInGame.Count>0){
                 for (int j = 0; j < players[0].MonstersInGame.Count; j++) {
                     if (players[0].MonstersInGame[j].LockedMonster == null)
                     {
-                        int pos = 0;
+                        int pos = -1;
+                        float distance = 0f;
                         for (int i = 0; i < players[1].MonstersInGame.Count; i++)
                         {
-                            Debug.Log(calcularDistancia(players[1].MonstersInGame[j].transform.position, players[1].MonstersInGame[i].transform.position));
+                            if (pos == -1)
+                            {
+                                pos = 0;
+                                distance = calcularDistancia(players[0].MonstersInGame[j].transform.position, players[1].MonstersInGame[i].transform.position);
+                            }
+                            if(distance> calcularDistancia(players[0].MonstersInGame[j].transform.position, players[1].MonstersInGame[i].transform.position))
+                            {
+                                pos = i;
+                                distance= calcularDistancia(players[0].MonstersInGame[j].transform.position, players[1].MonstersInGame[i].transform.position);
+                            }
                         }
+                        players[0].MonstersInGame[j].LockEnemy(players[1].MonstersInGame[pos]);
+                        Debug.Log(players[0].MonstersInGame[j].LockedMonster.transform.position);
                     }
                 }
             }
+        }
+        private void LockPlayer2()
+        {
+
         }
         private void DrawCards(Player player)
         {
