@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 13
   nombre: teba
-  monster: {fileID: 919132149155446097, guid: b1a4489ed8323ff43b26b82d56a79320, type: 3}
-  initialHealth: 10
+  monster: {fileID: 353396773240263959, guid: 2a46c07af130c57418f6b4b91fd90c8f, type: 3}
+  health: 10
   baseDamage: 5

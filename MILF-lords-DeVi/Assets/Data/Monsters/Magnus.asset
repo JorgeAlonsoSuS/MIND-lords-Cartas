@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 8
   nombre: Magnus
-  monster: {fileID: 919132149155446097, guid: 9d1e7195f7582344c9f12ccee4831980, type: 3}
-  initialHealth: 10
+  monster: {fileID: 7595452472027920090, guid: 12eb673b63fbd2440a43f30a556d8e9e, type: 3}
+  health: 10
   baseDamage: 5

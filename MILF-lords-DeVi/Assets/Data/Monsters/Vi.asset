@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 14
   nombre: Vi
-  monster: {fileID: 919132149155446097, guid: e1d2a5b59f8191043b308036e6637c56, type: 3}
-  initialHealth: 10
+  monster: {fileID: 4490522345690511198, guid: 7cb76882e5b8f4c41b0c426fbf3b5fdc, type: 3}
+  health: 10
   baseDamage: 5

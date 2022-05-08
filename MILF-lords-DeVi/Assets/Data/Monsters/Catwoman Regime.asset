@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   nombre: Catwoman
-  monster: {fileID: 919132149155446097, guid: 7bf23fba7deadce4ab9de3540d2a2356, type: 3}
-  initialHealth: 10
+  monster: {fileID: 1741880207132303832, guid: 394ef4b5fb1c87b47b25925fa76dd407, type: 3}
+  health: 10
   baseDamage: 5
