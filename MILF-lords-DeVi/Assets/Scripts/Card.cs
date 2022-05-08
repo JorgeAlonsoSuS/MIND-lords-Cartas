@@ -37,7 +37,7 @@ namespace Deck
         {
             yield return new WaitForSeconds( 0.25f);
             var newMonsterGameObject = Instantiate(monsterData.Prefab, transform.position,transform.rotation);
-            MonsterBehaviour monsterBehaviour = newMonsterGameObject.GetComponent<MonsterBehaviour>();
+            var monsterBehaviour = newMonsterGameObject.GetComponent<MonsterBehaviour>();
             Debug.Log(monsterBehaviour);
             monsterBehaviour.Init(owner);
             if (OnPlayed != null)
