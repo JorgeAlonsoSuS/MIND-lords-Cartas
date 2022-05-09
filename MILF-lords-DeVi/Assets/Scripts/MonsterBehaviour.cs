@@ -12,9 +12,14 @@ namespace Deck
         private int health = 10;
         [SerializeField]
         private int baseDamage = 5;
+        [SerializeField]
+        private float attackRadius = 1;
         private Player owner;
         private MonsterBehaviour lockedMonster =null;
         public MonsterBehaviour LockedMonster => lockedMonster;
+
+        public float AttackRadius => attackRadius;
+
         void Start()
         {
             monster = GetComponent<Rigidbody>();
@@ -42,7 +47,7 @@ namespace Deck
             }
         }
 
-        internal void Init(Player owner)
+        internal void Init(Player owner, MonsterDC monsterDC)
         {
             this.owner = owner;
         }

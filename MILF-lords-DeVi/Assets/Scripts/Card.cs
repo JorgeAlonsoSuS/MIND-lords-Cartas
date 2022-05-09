@@ -18,6 +18,8 @@ namespace Deck
 
         public int Id => monsterData.Id;
 
+        private bool summoned;
+
         internal void Init(MonsterDC monsterDC, Player player)
         {
             owner = player;
@@ -27,6 +29,11 @@ namespace Deck
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (summoned)
+            {
+                return;
+            }
+
             if (collision.gameObject.layer == LayerMask.NameToLayer("Tablero"))
             {
                 StartCoroutine(Summon());
@@ -35,10 +42,12 @@ namespace Deck
 
         private IEnumerator Summon()
         {
+            summoned = true;
+
             yield return new WaitForSeconds( 0.25f);
             var newMonsterGameObject = Instantiate(monsterData.Prefab, transform.position,transform.rotation);
             var monsterBehaviour = newMonsterGameObject.GetComponent<MonsterBehaviour>();
-            monsterBehaviour.Init(owner);
+            monsterBehaviour.Init(owner, monsterData);
             if (OnPlayed != null)
             {
                 OnPlayed.Invoke(monsterBehaviour);

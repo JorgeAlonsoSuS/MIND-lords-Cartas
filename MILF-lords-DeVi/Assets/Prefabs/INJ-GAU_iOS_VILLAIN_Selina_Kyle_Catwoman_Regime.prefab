@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1398286858682104674}
   - component: {fileID: 8804586912375638024}
+  - component: {fileID: 344099653117294771}
+  - component: {fileID: -245433876193487521}
   m_Layer: 0
   m_Name: INJ-GAU_iOS_VILLAIN_Selina_Kyle_Catwoman_Regime
   m_TagString: Untagged
@@ -44,9 +46,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c250969d23fee9349a25ab6795e77cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 0}
   health: 10
   baseDamage: 5
+--- !u!195 &344099653117294771
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741880207132303832}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-245433876193487521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741880207132303832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba072eb6b4167554ba79081da0c9b23c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7323324897235884289
 GameObject:
   m_ObjectHideFlags: 0
