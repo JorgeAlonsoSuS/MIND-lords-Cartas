@@ -59,14 +59,37 @@ namespace Deck
                             }
                         }
                         players[0].MonstersInGame[j].LockEnemy(players[1].MonstersInGame[pos]);
-                        Debug.Log(players[0].MonstersInGame[j].LockedMonster.transform.position);
                     }
                 }
             }
         }
         private void LockPlayer2()
         {
-
+            if (players[0].MonstersInGame.Count > 0)
+            {
+                for (int j = 0; j < players[1].MonstersInGame.Count; j++)
+                {
+                    if (players[1].MonstersInGame[j].LockedMonster == null)
+                    {
+                        int pos = -1;
+                        float distance = 0f;
+                        for (int i = 0; i < players[0].MonstersInGame.Count; i++)
+                        {
+                            if (pos == -1)
+                            {
+                                pos = 0;
+                                distance = calcularDistancia(players[1].MonstersInGame[j].transform.position, players[0].MonstersInGame[i].transform.position);
+                            }
+                            if (distance > calcularDistancia(players[1].MonstersInGame[j].transform.position, players[0].MonstersInGame[i].transform.position))
+                            {
+                                pos = i;
+                                distance = calcularDistancia(players[1].MonstersInGame[j].transform.position, players[0].MonstersInGame[i].transform.position);
+                            }
+                        }
+                        players[1].MonstersInGame[j].LockEnemy(players[0].MonstersInGame[pos]);
+                    }
+                }
+            }
         }
         private void DrawCards(Player player)
         {
