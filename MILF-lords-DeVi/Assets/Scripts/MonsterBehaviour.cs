@@ -8,7 +8,6 @@ namespace Deck
 {
     public class MonsterBehaviour : MonoBehaviour
     {
-        private GameObject monster;
         [SerializeField]
         private int health = 10;
         [SerializeField]
@@ -27,14 +26,13 @@ namespace Deck
 
         void Start()
         {
-            monster = GetComponent<GameObject>();
             navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (health <= 0)  Destroy(monster); 
+            if (health <= 0)  Destroy(gameObject); 
             if (navMeshAgent.isStopped) Atack();
         }
         private void Damage(int damage)
