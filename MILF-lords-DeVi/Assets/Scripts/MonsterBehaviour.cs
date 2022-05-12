@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Deck
 {
@@ -15,7 +16,9 @@ namespace Deck
         [SerializeField]
         private float attackRadius = 1;
         private Player owner;
+        private NavMeshAgent navMeshAgent;
         private MonsterBehaviour lockedMonster =null;
+        private bool canAtack = true;
         public MonsterBehaviour LockedMonster => lockedMonster;
 
         public float AttackRadius => attackRadius;
@@ -23,12 +26,14 @@ namespace Deck
         void Start()
         {
             monster = GetComponent<Rigidbody>();
+            navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         // Update is called once per frame
         void Update()
         {
             if (health <= 0) Destroy(monster);
+            if (navMeshAgent.isStopped) Atack();
         }
         private void Damage(int damage)
         {
@@ -39,11 +44,14 @@ namespace Deck
             int damage = baseDamage;
             return damage;
         }
-        public void OnCollisionEnter(Collision collision)
+        public void Atack()
         {
-            if (collision.gameObject.layer != monster.gameObject.layer)
+            Debug.Log(health);
+            if (canAtack)
             {
-                //Llamamos a la funcion attackCalculation y le hacemos daño al enemigo.
+                lockedMonster.Damage(2);
+                canAtack = false;
+                StartCoroutine(CoolDown());
             }
         }
 
@@ -56,9 +64,10 @@ namespace Deck
         {
             if(lockedMonster==null) lockedMonster = monsterL;
         }
-        public void MoveToEnemy(MonsterDC monster)
+        private IEnumerator CoolDown()
         {
-
-        } 
+            yield return new WaitForSeconds(5);
+            canAtack = true;
+        }
     }
 }
