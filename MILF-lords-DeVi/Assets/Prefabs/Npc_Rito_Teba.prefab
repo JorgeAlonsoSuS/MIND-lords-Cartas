@@ -116,7 +116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  baseDamage: 5
+  baseDamage: 3
+  attackRadius: 3
+  attackSpeed: 2
 --- !u!195 &1733526028118707547
 NavMeshAgent:
   m_ObjectHideFlags: 0

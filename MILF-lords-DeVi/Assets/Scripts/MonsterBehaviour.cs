@@ -8,13 +8,15 @@ namespace Deck
 {
     public class MonsterBehaviour : MonoBehaviour
     {
-        private Rigidbody monster;
+        private GameObject monster;
         [SerializeField]
         private int health = 10;
         [SerializeField]
         private int baseDamage = 5;
         [SerializeField]
         private float attackRadius = 1;
+        [SerializeField]
+        private float attackSpeed = 5;
         private Player owner;
         private NavMeshAgent navMeshAgent;
         private MonsterBehaviour lockedMonster =null;
@@ -25,14 +27,14 @@ namespace Deck
 
         void Start()
         {
-            monster = GetComponent<Rigidbody>();
+            monster = GetComponent<GameObject>();
             navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (health <= 0) Destroy(monster);
+            if (health <= 0)  Destroy(monster); 
             if (navMeshAgent.isStopped) Atack();
         }
         private void Damage(int damage)
@@ -49,7 +51,7 @@ namespace Deck
             Debug.Log(health);
             if (canAtack)
             {
-                lockedMonster.Damage(2);
+                lockedMonster.Damage(baseDamage);
                 canAtack = false;
                 StartCoroutine(CoolDown());
             }
@@ -66,7 +68,7 @@ namespace Deck
         }
         private IEnumerator CoolDown()
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(attackSpeed);
             canAtack = true;
         }
     }
