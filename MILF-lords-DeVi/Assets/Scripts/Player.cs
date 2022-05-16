@@ -10,8 +10,6 @@ namespace Deck
         private List<MonsterDC> gameMonster;
         [SerializeField]
         private int cardsToDraft;
-        [SerializeField]
-        private GameObject card;
 
 
         public int CardsToDraft => cardsToDraft;
