@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Deck.GameSteps;
 
 namespace Deck
 {
@@ -23,6 +24,21 @@ namespace Deck
         {
             DrawCards(players[0]);
             DrawCards(players[1]);
+
+            players[0].ToggleCardsInteractive(false);
+            players[1].ToggleCardsInteractive(false);
+
+            var gameLoop = new GameLoop(
+                new List<IGameStep>()
+                {
+                    new StartPlayerPhase(players[0]),
+                    new PlayCardsPhase(players[0]),
+                    new StartPlayerPhase(players[1]),
+                    new PlayCardsPhase(players[1])
+                }
+            );
+
+            gameLoop.RunGame();
         }
 
         private void Update()

@@ -55,5 +55,10 @@ namespace Deck
             }
             Destroy(this.gameObject);
         }
+
+        public void ToggleInteractive(bool interactive)
+        {
+            GetComponent<Collider>().enabled = interactive;
+        }
     }
 }

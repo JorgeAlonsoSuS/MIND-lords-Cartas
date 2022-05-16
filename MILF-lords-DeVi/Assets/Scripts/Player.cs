@@ -37,5 +37,13 @@ namespace Deck
         {
             MonstersInGame.Add(obj);
         }
+
+        public void ToggleCardsInteractive(bool interactive)
+        {
+            foreach (var card in Hand)
+            {
+                card.ToggleInteractive(interactive);
+            }
+        }
     }
 }
