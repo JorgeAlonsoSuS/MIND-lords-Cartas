@@ -37,16 +37,32 @@ namespace Deck
 
         private void RepositionHand()
         {
-            float SPACING = .1f;
-            float CARD_WIDTH = 1f;
-            float width = Hand.Count * CARD_WIDTH + (Hand.Count - 1) * SPACING;
+            float SPACING = .01f;
+            float CARD_WIDTH = .1f;
+            float CARD_HEIGHT = .15f;
+            float MAX_CARDS_PER_ROW = 5f;
+
+            float cardPerRow = Mathf.Min(MAX_CARDS_PER_ROW, Hand.Count);
+            int rowCount = Mathf.CeilToInt(Hand.Count / cardPerRow);
+
+            Debug.Log("rows : " + rowCount);
+
+            float width = cardPerRow * CARD_WIDTH + (Hand.Count - 1) * SPACING;
             float startPosition = -width / 2f;
 
             for(var i = 0; i < Hand.Count; i++)
             {
+                int posInRow = (int)(i % cardPerRow);
+                int currentRow = Mathf.FloorToInt(i / cardPerRow);
+
                 var card = Hand[i];
-                float xPos = startPosition + (i * CARD_WIDTH + SPACING);
-                card.transform.localPosition = new Vector3(xPos, .5f, 0);
+                float xPos = startPosition + posInRow * CARD_WIDTH + posInRow * SPACING + CARD_WIDTH / 2f;
+                float zPos = currentRow * (CARD_HEIGHT + SPACING); 
+                Debug.Log("xPos : " + xPos);
+                //if (xPos < -0.4f) card.transform.localPosition = new Vector3(xPos, .5f, -0.2f);
+                //else
+                card.transform.localPosition = new Vector3(xPos, .5f, -zPos);
+
             }
         }
 
