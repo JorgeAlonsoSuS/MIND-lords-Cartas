@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,14 +27,34 @@ namespace Deck
         public void AddCard(Card card)
         {
             Hand.Add(card);
+            card.transform.SetParent(transform);
             Vector3 v = new Vector3(transform.position.x, transform.position.y + 0.29f, transform.position.z);
             card.transform.position = v;
             card.OnPlayed += Card_OnPlayed;
+
+            RepositionHand();
         }
 
-        private void Card_OnPlayed(MonsterBehaviour obj)
+        private void RepositionHand()
         {
+            float SPACING = .1f;
+            float CARD_WIDTH = 1f;
+            float width = Hand.Count * CARD_WIDTH + (Hand.Count - 1) * SPACING;
+            float startPosition = -width / 2f;
+
+            for(var i = 0; i < Hand.Count; i++)
+            {
+                var card = Hand[i];
+                float xPos = startPosition + (i * CARD_WIDTH + SPACING);
+                card.transform.localPosition = new Vector3(xPos, .5f, 0);
+            }
+        }
+
+        private void Card_OnPlayed(Card card, MonsterBehaviour obj)
+        {
+            Hand.Remove(card);
             MonstersInGame.Add(obj);
+            RepositionHand();
         }
 
         public void ToggleCardsInteractive(bool interactive)

@@ -8,7 +8,7 @@ namespace Deck
     public class Card : MonoBehaviour
     {
 
-        public event Action<MonsterBehaviour> OnPlayed;
+        public event Action<Card, MonsterBehaviour> OnPlayed;
 
         private int cardIndex;
         private Player owner;
@@ -50,7 +50,7 @@ namespace Deck
             monsterBehaviour.Init(owner, monsterData);
             if (OnPlayed != null)
             {
-                OnPlayed.Invoke(monsterBehaviour);
+                OnPlayed.Invoke(this, monsterBehaviour);
                 Debug.Log("Añadido");
             }
             Destroy(this.gameObject);
