@@ -5,6 +5,13 @@ using UnityEngine;
 
 namespace Deck
 {
+
+    public enum PlayerType
+    {
+        Player,
+        Rival
+    }
+
     public class Player : MonoBehaviour
     {
         [SerializeField]
@@ -12,6 +19,8 @@ namespace Deck
         [SerializeField]
         private int cardsToDraft;
 
+        [SerializeField]
+        private PlayerType playerId;
 
         public int CardsToDraft => cardsToDraft;
 
@@ -39,8 +48,9 @@ namespace Deck
         {
             float SPACING = .01f;
             float CARD_WIDTH = .1f;
-            float CARD_HEIGHT = .15f;
-            float MAX_CARDS_PER_ROW = 5f;
+            float CARD_HEIGHT = .25f;
+            float MAX_CARDS_PER_ROW = 7f;
+            float V_SPACING = .2f;
 
             float cardPerRow = Mathf.Min(MAX_CARDS_PER_ROW, Hand.Count);
             int rowCount = Mathf.CeilToInt(Hand.Count / cardPerRow);
@@ -48,20 +58,25 @@ namespace Deck
             Debug.Log("rows : " + rowCount);
 
             float width = cardPerRow * CARD_WIDTH + (Hand.Count - 1) * SPACING;
-            float startPosition = -width / 2f;
+            float xStartPosition = -width / 2f;
 
-            for(var i = 0; i < Hand.Count; i++)
+            float height = rowCount * CARD_HEIGHT + (rowCount - 1) * V_SPACING;
+            float zStartPosition = height / 2f;
+
+            for (var i = 0; i < Hand.Count; i++)
             {
                 int posInRow = (int)(i % cardPerRow);
                 int currentRow = Mathf.FloorToInt(i / cardPerRow);
 
                 var card = Hand[i];
-                float xPos = startPosition + posInRow * CARD_WIDTH + posInRow * SPACING + CARD_WIDTH / 2f;
-                float zPos = currentRow * (CARD_HEIGHT + SPACING); 
+                float xPos = xStartPosition + posInRow * (CARD_WIDTH + SPACING) + CARD_WIDTH / 2f;
+                float zPos = zStartPosition - currentRow * (CARD_HEIGHT + V_SPACING) - CARD_HEIGHT / 2f; 
                 Debug.Log("xPos : " + xPos);
-                //if (xPos < -0.4f) card.transform.localPosition = new Vector3(xPos, .5f, -0.2f);
-                //else
-                card.transform.localPosition = new Vector3(xPos, .5f, -zPos);
+                card.transform.localPosition = new Vector3(xPos, .5f, zPos);
+                if (playerId == PlayerType.Player)
+                {
+                    card.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
 
             }
         }

@@ -17,3 +17,4 @@ MonoBehaviour:
   monster: {fileID: 2976985604670163265, guid: adb67314fa1dcda4287d50dec9b17782, type: 3}
   health: 10
   baseDamage: 5
+  cardImage: {fileID: 2800000, guid: 0028f175a623e994f9bb5937bd1aaeec, type: 3}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Deck
 {
@@ -12,6 +13,9 @@ namespace Deck
         private Vector3 initialPosition;
         private Quaternion initialRotation;
         private int player;
+
+        [SerializeField]
+        private RawImage previewCanvas;
         void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -62,6 +66,30 @@ namespace Deck
                     selectedObject = null;
                     Cursor.visible = true;
                 }
+            }
+            
+            if (Input.GetMouseButtonDown(1))
+            {
+                Card hightlightCard = null;
+
+                var raycastHit = CastRay();
+
+                if (raycastHit.collider != null)
+                {
+                    hightlightCard = raycastHit.collider.GetComponent<Card>();
+                }
+                if (hightlightCard != null)
+                {
+                    if (hightlightCard.MonsterData.CardImage)
+                    {
+                        previewCanvas.gameObject.SetActive(true);
+                        previewCanvas.texture = hightlightCard.MonsterData.CardImage;
+                    }
+                }
+            }
+            else if (Input.GetMouseButtonUp(1))
+            {
+                    previewCanvas.gameObject.SetActive(false);  
             }
 
             if (selectedObject != null)

@@ -22,6 +22,8 @@ namespace Deck.GameSteps
         {
             Debug.Log("Start player phase : " + player.name);
 
+            GameManager.Instance.SetCurrentPlayer(player);
+
             AutoComplete();
         }
 

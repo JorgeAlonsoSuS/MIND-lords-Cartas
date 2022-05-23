@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Deck.GameSteps;
+using System;
 
 namespace Deck
 {
     public class GameManager : MonoBehaviour
     {
+
+        public static GameManager Instance { get; private set; }
+        public Player CurrentPlayer { get; private set; }
 
         [SerializeField]
         private MonsterDC[] monters;
@@ -22,6 +26,14 @@ namespace Deck
 
         private void Awake()
         {
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+
             DrawCards(players[0]);
             DrawCards(players[1]);
 
@@ -39,6 +51,11 @@ namespace Deck
             );
 
             gameLoop.RunGame();
+        }
+
+        internal void SetCurrentPlayer(Player player)
+        {
+            CurrentPlayer = player;
         }
 
         private void Update()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Deck
 {
@@ -17,12 +18,14 @@ namespace Deck
         private int health = 10;
         [SerializeField]
         private int baseDamage = 5;
-
+        [SerializeField]
+        private Texture2D cardImage;
 
         public int Id => id;
         public int BaseDmage => BaseDmage;
-        public int Health =>health;
-        public string Nombre=>nombre;
+        public int Health => health;
+        public string Nombre => nombre;
         public GameObject Prefab => monster;
+        public Texture2D CardImage => cardImage;
     }
 }

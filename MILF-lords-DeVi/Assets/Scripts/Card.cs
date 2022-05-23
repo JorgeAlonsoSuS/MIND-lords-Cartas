@@ -15,6 +15,10 @@ namespace Deck
         private GameObject cardObject;
 
         private MonsterDC monsterData;
+        public MonsterDC MonsterData => monsterData;
+
+        [SerializeField]
+        private Renderer renderer;
 
         public int Id => monsterData.Id;
 
@@ -24,6 +28,7 @@ namespace Deck
         {
             owner = player;
             monsterData = monsterDC;
+            renderer.material.SetTexture("_MainTex", monsterDC.CardImage);
         }
 
 
