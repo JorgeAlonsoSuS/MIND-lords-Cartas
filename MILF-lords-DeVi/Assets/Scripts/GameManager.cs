@@ -24,6 +24,8 @@ namespace Deck
         private CardFactory cardFactory;
         private bool check = false;
 
+        private GameLoop gameLoop;
+
         private void Awake()
         {
             if (Instance != null)
@@ -40,7 +42,7 @@ namespace Deck
             players[0].ToggleCardsInteractive(false);
             players[1].ToggleCardsInteractive(false);
 
-            var gameLoop = new GameLoop(
+                gameLoop = new GameLoop(
                 new List<IGameStep>()
                 {
                     new StartPlayerPhase(players[0]),
@@ -141,5 +143,6 @@ namespace Deck
         {
             return Vector3.Distance(originPosition, destinyPosition);
         }
+
     }
 }

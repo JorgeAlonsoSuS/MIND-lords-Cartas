@@ -22,6 +22,10 @@ namespace Deck.GameSteps
         {
             Debug.Log("Start player phase : " + player.name);
 
+            //Camera.main
+            //Aqui hay que mover la camara
+            
+
             GameManager.Instance.SetCurrentPlayer(player);
 
             AutoComplete();

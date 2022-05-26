@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
     public void ShowGameView() {
         MainCamera.enabled = true;
         MenuCamera.enabled = false;
+        //Aqui hay que hacer un singleton a game managar para que empecemos aqui el game loop
     }
     
 }
