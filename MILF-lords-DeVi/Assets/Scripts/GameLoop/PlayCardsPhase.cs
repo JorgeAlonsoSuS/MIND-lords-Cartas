@@ -22,7 +22,6 @@ namespace Deck.GameSteps
             player.ToggleCardsInteractive(true);
 
             InterfaceManager.Instance.SkipPlayCardPhaseButton.gameObject.SetActive(true);
-
             InterfaceManager.Instance.SkipPlayCardPhaseButton.onClick.AddListener(SkipClicked);
         }
 
@@ -30,7 +29,6 @@ namespace Deck.GameSteps
         {
             player.ToggleCardsInteractive(false);
             InterfaceManager.Instance.SkipPlayCardPhaseButton.gameObject.SetActive(false);
-
             OnCompleted?.Invoke(this);
         }
     }

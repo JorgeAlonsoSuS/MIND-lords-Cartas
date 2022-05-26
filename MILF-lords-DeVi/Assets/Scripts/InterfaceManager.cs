@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class InterfaceManager : MonoBehaviour
+namespace Deck
 {
-    public static InterfaceManager Instance { get; private set; }
-
-    [SerializeField]
-    private Button skipPlayCardPhaseButton;
-
-    public Button SkipPlayCardPhaseButton => skipPlayCardPhaseButton;
-
-    private void Awake()
+    public class InterfaceManager : MonoBehaviour
     {
-        if (Instance != null)
+        public static InterfaceManager Instance { get; private set; }
+
+        [SerializeField]
+        private Button skipPlayCardPhaseButton;
+        
+        public Button SkipPlayCardPhaseButton => skipPlayCardPhaseButton;
+        public
+
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+
+            skipPlayCardPhaseButton.gameObject.SetActive(false);
         }
-
-        Instance = this;
-
-        skipPlayCardPhaseButton.gameObject.SetActive(false);
     }
 }

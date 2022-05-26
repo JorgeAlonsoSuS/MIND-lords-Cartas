@@ -22,9 +22,12 @@ namespace Deck
 
         [SerializeField]
         private CardFactory cardFactory;
+        [SerializeField]
+        public  Camera mainCamera;
         private bool check = false;
 
         private GameLoop gameLoop;
+        
 
         private void Awake()
         {
