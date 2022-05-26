@@ -18,7 +18,8 @@ namespace Deck
             var card = newCard.GetComponent<Card>();
             var validCards = gameMonster.Where(c => !excludeCardIds.Contains(c.Id)).ToList();
             var randomIndex = Random.Range(0, validCards.Count());
-            card.Init(gameMonster[randomIndex], GetComponent<Player>());
+            var selectedCard = validCards[randomIndex];
+            card.Init(selectedCard, GetComponent<Player>());
             return card;
         }
     }

@@ -55,7 +55,6 @@ namespace Deck
             float cardPerRow = Mathf.Min(MAX_CARDS_PER_ROW, Hand.Count);
             int rowCount = Mathf.CeilToInt(Hand.Count / cardPerRow);
 
-            Debug.Log("rows : " + rowCount);
 
             float width = cardPerRow * CARD_WIDTH + (Hand.Count - 1) * SPACING;
             float xStartPosition = -width / 2f;
@@ -71,7 +70,6 @@ namespace Deck
                 var card = Hand[i];
                 float xPos = xStartPosition + posInRow * (CARD_WIDTH + SPACING) + CARD_WIDTH / 2f;
                 float zPos = zStartPosition - currentRow * (CARD_HEIGHT + V_SPACING) - CARD_HEIGHT / 2f; 
-                Debug.Log("xPos : " + xPos);
                 card.transform.localPosition = new Vector3(xPos, .5f, zPos);
                 if (playerId == PlayerType.Player)
                 {
