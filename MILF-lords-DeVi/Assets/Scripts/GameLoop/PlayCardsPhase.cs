@@ -10,6 +10,7 @@ namespace Deck.GameSteps
     {
         private Player player;
 
+
         public event Action<IGameStep> OnCompleted;
 
         public PlayCardsPhase(Player player)
@@ -23,6 +24,7 @@ namespace Deck.GameSteps
 
             InterfaceManager.Instance.SkipPlayCardPhaseButton.gameObject.SetActive(true);
             InterfaceManager.Instance.SkipPlayCardPhaseButton.onClick.AddListener(SkipClicked);
+
         }
 
         private void SkipClicked()

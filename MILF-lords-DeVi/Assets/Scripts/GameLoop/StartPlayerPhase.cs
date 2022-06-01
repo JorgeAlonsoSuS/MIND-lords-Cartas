@@ -21,11 +21,11 @@ namespace Deck.GameSteps
         public void Start()
         {
             Debug.Log("Start player phase : " + player.name);
-            if (InterfaceManager.Instance.MainCamera != null)
+            /*if (InterfaceManager.Instance.MainCamera != null)
             {
                 InterfaceManager.Instance.MainCamera.transform.rotation *= Quaternion.Euler(0, player.transform.rotation.y, 0);
                 InterfaceManager.Instance.MainCamera.transform.position = new Vector3(0, 0, (player.transform.position.z) * 1.5f);
-            }
+            }*/
             GameManager.Instance.SetCurrentPlayer(player);
 
             AutoComplete();

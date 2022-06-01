@@ -51,7 +51,8 @@ namespace Deck
                     new StartPlayerPhase(players[0]),
                     new PlayCardsPhase(players[0]),
                     new StartPlayerPhase(players[1]),
-                    new PlayCardsPhase(players[1])
+                    new PlayCardsPhase(players[1]),
+                    new FightStage(players[0], players[1], this)
                 }
             );
 
@@ -67,15 +68,15 @@ namespace Deck
         {
             if (!check)
             {
-                if(players[0].MonstersInGame.Count>0) LockPlayer1();
-                if (players[1].MonstersInGame.Count > 0) LockPlayer2();
+               /* if(players[0].MonstersInGame.Count>0) LockPlayer1();
+                if (players[1].MonstersInGame.Count > 0) LockPlayer2(); */
             }
             else
             {
                 StartCoroutine(CheckAgain());
             }
         }
-        private void LockPlayer1()
+        public void LockPlayer1()
         {
             if (players[1].MonstersInGame.Count>0){
                 for (int j = 0; j < players[0].MonstersInGame.Count; j++) {
@@ -101,7 +102,7 @@ namespace Deck
                 }
             }
         }
-        private void LockPlayer2()
+        public void LockPlayer2()
         {
             if (players[0].MonstersInGame.Count > 0)
             {

@@ -12,7 +12,6 @@ namespace Deck
         private Button skipPlayCardPhaseButton;
         
         public Button SkipPlayCardPhaseButton => skipPlayCardPhaseButton;
-        public
 
         private void Awake()
         {
