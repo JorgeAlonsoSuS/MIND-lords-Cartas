@@ -22,12 +22,17 @@ namespace Deck
 
         [SerializeField]
         private CardFactory cardFactory;
+
         [SerializeField]
         public  Camera mainCamera;
+
         private bool check = false;
 
         private GameLoop gameLoop;
-        
+        private Boolean combatCam = false;
+
+        [SerializeField]
+        private Transform[] playerPositions;
 
         private void Awake()
         {
@@ -52,13 +57,42 @@ namespace Deck
                     new PlayCardsPhase(players[0]),
                     new StartPlayerPhase(players[1]),
                     new PlayCardsPhase(players[1]),
+                    new MoveCameraToCombatSight(this),
                     new FightStage(players[0], players[1], this)
                 }
             );
 
             gameLoop.RunGame();
         }
-
+        private void cameraMove()
+        {
+            if (!combatCam)
+            {
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if (CurrentPlayer == players[i])
+                    {
+                        if (mainCamera.transform.position != playerPositions[i].position || mainCamera.transform.rotation != playerPositions[i].rotation)
+                        {
+                            mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, playerPositions[i].position, 30f * Time.deltaTime);
+                            mainCamera.transform.rotation = Quaternion.RotateTowards(mainCamera.transform.rotation, playerPositions[i].rotation, 45f * Time.deltaTime);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (mainCamera.transform.position != playerPositions[2].position || mainCamera.transform.rotation != playerPositions[2].rotation)
+                {
+                    mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, playerPositions[2].position, 30f * Time.deltaTime);
+                    mainCamera.transform.rotation = Quaternion.RotateTowards(mainCamera.transform.rotation, playerPositions[2].rotation, 45f * Time.deltaTime);
+                }
+            }
+        }
+        public void CameraCombatMove()
+        {
+            combatCam = true;
+        }
         internal void SetCurrentPlayer(Player player)
         {
             CurrentPlayer = player;
@@ -75,6 +109,7 @@ namespace Deck
             {
                 StartCoroutine(CheckAgain());
             }
+            cameraMove();
         }
         public void LockPlayer1()
         {

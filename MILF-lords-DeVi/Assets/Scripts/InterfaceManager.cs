@@ -10,7 +10,8 @@ namespace Deck
 
         [SerializeField]
         private Button skipPlayCardPhaseButton;
-        
+     
+
         public Button SkipPlayCardPhaseButton => skipPlayCardPhaseButton;
 
         private void Awake()

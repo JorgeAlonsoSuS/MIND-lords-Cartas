@@ -50,7 +50,7 @@ namespace Deck
             summoned = true;
 
             yield return new WaitForSeconds( 0.25f);
-            var newMonsterGameObject = Instantiate(monsterData.Prefab, transform.position,transform.rotation *  Quaternion.Euler(0,180,0));
+            var newMonsterGameObject = Instantiate(monsterData.Prefab, transform.position,owner.transform.rotation);
             var monsterBehaviour = newMonsterGameObject.GetComponent<MonsterBehaviour>();
             monsterBehaviour.Init(owner, monsterData);
             if (OnPlayed != null)
