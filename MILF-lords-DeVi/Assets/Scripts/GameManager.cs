@@ -100,7 +100,6 @@ namespace Deck
         {
             CurrentPlayer = player;
         }
-
         private void Update()
         {
             cameraMove();
@@ -119,7 +118,6 @@ namespace Deck
                 }
             }
         }
-
         private void FinishGame(Player player)
         {
             startFight = false;
@@ -130,8 +128,11 @@ namespace Deck
             {
                 gameLoop.RunGame();
             }
+            else
+            {
+                CurrentPlayer = player;
+            }
         }
-
         public MonsterBehaviour Punch(Player player, MonsterBehaviour monsterB) 
         {
             if (startFight)
@@ -158,7 +159,6 @@ namespace Deck
                         return players[1].MonstersInGame[pos];
                     }
                 }
-
                 else
                 {
                     if (players[0].MonstersInGame.Count > 0)
@@ -181,13 +181,9 @@ namespace Deck
                         return players[0].MonstersInGame[pos];
                     }
                 }
-            }
-            
-
+            }          
             return null;
         }    
-           
-
         private void DrawCards(Player player)
         {
             for (int i = 0; i < player.CardsToDraft; i++)
@@ -201,6 +197,5 @@ namespace Deck
         {
             return Vector3.Distance(originPosition, destinyPosition);
         }
-
     }
 }
