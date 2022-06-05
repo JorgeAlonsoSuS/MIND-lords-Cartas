@@ -18,22 +18,38 @@ namespace Deck
         private float attackSpeed = 5;
         private Player owner;
         private NavMeshAgent navMeshAgent;
-        private MonsterBehaviour lockedMonster =null;
+        private MonsterBehaviour lockedMonster = null;
         private bool canAtack = true;
+        private GameManager gameManager;
         public MonsterBehaviour LockedMonster => lockedMonster;
+        
+        public int Health => health;
 
         public float AttackRadius => attackRadius;
 
         void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (health <= 0)  Destroy(gameObject); 
-            if (navMeshAgent.isStopped) Atack();
+            if (health <= 0)  StartCoroutine(terrorificDeath());
+            if (LockedMonster != null)
+            {
+                if (!lockedMonster.owner.MonstersInGame.Contains(lockedMonster))
+                {
+                    LockEnemy();
+                    Debug.Log(lockedMonster);
+                }
+            } 
+            else
+            {
+                LockEnemy();
+            } 
+            if (navMeshAgent.isStopped && canAtack) Atack();
         }
         private void Damage(int damage)
         {
@@ -46,13 +62,16 @@ namespace Deck
         }
         public void Atack()
         {
-            Debug.Log(health);
-            if (canAtack)
+            if (lockedMonster != null)
             {
-                lockedMonster.Damage(baseDamage);
-                canAtack = false;
-                StartCoroutine(CoolDown());
+                if (Vector3.Distance(this.transform.position, lockedMonster.transform.position)<=attackRadius)
+                {
+                    lockedMonster.Damage(baseDamage);
+                    canAtack = false;
+                    StartCoroutine(CoolDown());
+                }
             }
+                
         }
 
         internal void Init(Player owner, MonsterDC monsterDC)
@@ -60,14 +79,21 @@ namespace Deck
             this.owner = owner;
         }
 
-        public void LockEnemy(MonsterBehaviour monsterL)
+        public void LockEnemy()
         {
-            if(lockedMonster==null) lockedMonster = monsterL;
+           lockedMonster = gameManager.Punch(owner, this);
         }
         private IEnumerator CoolDown()
         {
             yield return new WaitForSeconds(attackSpeed);
             canAtack = true;
+        }
+
+        private IEnumerator terrorificDeath()
+        {
+            yield return new WaitForSeconds(0.5f);
+            owner.removeMonster(this);
+            Destroy(gameObject);
         }
     }
 }

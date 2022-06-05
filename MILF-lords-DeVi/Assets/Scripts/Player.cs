@@ -25,8 +25,12 @@ namespace Deck
         public int CardsToDraft => cardsToDraft;
 
         public List<Card> Hand { get; private set; } = new List<Card>();
-        public List<MonsterDC> monsterInGame { get; private set; } = new List<MonsterDC>();
         public List<MonsterBehaviour> MonstersInGame { get; private set; } = new List<MonsterBehaviour>();
+
+        public void removeMonster(MonsterBehaviour monster)
+        {
+            MonstersInGame.Remove(monster);
+        }
 
         void Awake()
         {

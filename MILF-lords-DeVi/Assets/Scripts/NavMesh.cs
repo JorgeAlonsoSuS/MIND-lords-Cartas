@@ -25,6 +25,7 @@ public class NavMesh : MonoBehaviour
         if (Vector3.Distance(transform.position, monster.LockedMonster.transform.position) > monster.AttackRadius)
         {
             navMeshAgent.SetDestination(monster.LockedMonster.transform.position);
+            navMeshAgent.isStopped = false;
         }
         else
         {

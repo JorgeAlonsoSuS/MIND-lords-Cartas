@@ -25,8 +25,7 @@ namespace Deck.GameSteps
 
         public void Start()
         {
-            if (player1.MonstersInGame.Count > 0) gameManager.LockPlayer1();
-            if (player2.MonstersInGame.Count > 0) gameManager.LockPlayer2();
+            this.gameManager.startFight = true;
         }
     }
 }

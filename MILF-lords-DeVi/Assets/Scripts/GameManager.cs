@@ -33,6 +33,9 @@ namespace Deck
 
         [SerializeField]
         private Transform[] playerPositions;
+        
+        public Boolean startFight = false;
+
 
         private void Awake()
         {
@@ -111,7 +114,7 @@ namespace Deck
             }
             cameraMove();
         }
-        public void LockPlayer1()
+       /* public void LockPlayer1()
         {
             if (players[1].MonstersInGame.Count>0){
                 for (int j = 0; j < players[0].MonstersInGame.Count; j++) {
@@ -133,6 +136,17 @@ namespace Deck
                             }
                         }
                         players[0].MonstersInGame[j].LockEnemy(players[1].MonstersInGame[pos]);
+
+                        LockPlayer1();
+                    }
+
+                    if(players[0].MonstersInGame[j].LockedMonster != null)
+                    {
+                        if(players[0].MonstersInGame[j].LockedMonster.Health == 0)
+                        {
+                            players[0].MonstersInGame[j].LockEnemy(null);
+                            LockPlayer1();
+                        }
                     }
                 }
             }
@@ -161,10 +175,80 @@ namespace Deck
                             }
                         }
                         players[1].MonstersInGame[j].LockEnemy(players[0].MonstersInGame[pos]);
+
+                        LockPlayer2();
+                    }
+
+                    if (players[1].MonstersInGame[j].LockedMonster != null)
+                    {
+                        if (players[1].MonstersInGame[j].LockedMonster.Health == 0)
+                        {
+                            players[1].MonstersInGame[j].LockEnemy(null);
+                            LockPlayer1();
+                        }
+                    }
+                }
+
+                
+            }
+        }*/
+
+        public MonsterBehaviour Punch(Player player, MonsterBehaviour monsterB) 
+        {
+            if (startFight)
+            {
+                if (players[0] == player)
+                {
+                    if (players[1].MonstersInGame.Count > 0)
+                    {
+                        int pos = -1;
+                        float distance = 0f;
+                        for (int i = 0; i < players[1].MonstersInGame.Count; i++)
+                        {
+                            if (pos == -1)
+                            {
+                                pos = 0;
+                                distance = calcularDistancia(monsterB.transform.position, players[1].MonstersInGame[i].transform.position);
+                            }
+                            if (distance > calcularDistancia(monsterB.transform.position, players[1].MonstersInGame[i].transform.position))
+                            {
+                                pos = i;
+                                distance = calcularDistancia(monsterB.transform.position, players[1].MonstersInGame[i].transform.position);
+                            }
+                        }
+                        return players[1].MonstersInGame[pos];
+                    }
+                }
+
+                else
+                {
+                    if (players[0].MonstersInGame.Count > 0)
+                    {
+                        int pos = -1;
+                        float distance = 0f;
+                        for (int i = 0; i < players[0].MonstersInGame.Count; i++)
+                        {
+                            if (pos == -1)
+                            {
+                                pos = 0;
+                                distance = calcularDistancia(monsterB.transform.position, players[0].MonstersInGame[i].transform.position);
+                            }
+                            if (distance > calcularDistancia(monsterB.transform.position, players[0].MonstersInGame[i].transform.position))
+                            {
+                                pos = i;
+                                distance = calcularDistancia(monsterB.transform.position, players[0].MonstersInGame[i].transform.position);
+                            }
+                        }
+                        return players[0].MonstersInGame[pos];
                     }
                 }
             }
-        }
+            
+
+            return null;
+        }    
+           
+
         private void DrawCards(Player player)
         {
             for (int i = 0; i < player.CardsToDraft; i++)
