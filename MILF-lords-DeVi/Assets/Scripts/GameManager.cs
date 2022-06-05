@@ -26,14 +26,13 @@ namespace Deck
         [SerializeField]
         public  Camera mainCamera;
 
-        private bool check = false;
 
-        private GameLoop gameLoop;
-        private Boolean combatCam = false;
 
         [SerializeField]
         private Transform[] playerPositions;
         
+        private GameLoop gameLoop;
+        private Boolean combatCam = false;
         public Boolean startFight = false;
 
 
@@ -56,6 +55,7 @@ namespace Deck
                 gameLoop = new GameLoop(
                 new List<IGameStep>()
                 {
+                     new CleaningPhase(players[0], players[1]),
                     new StartPlayerPhase(players[0]),
                     new PlayCardsPhase(players[0]),
                     new StartPlayerPhase(players[1]),
@@ -78,7 +78,7 @@ namespace Deck
                         if (mainCamera.transform.position != playerPositions[i].position || mainCamera.transform.rotation != playerPositions[i].rotation)
                         {
                             mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, playerPositions[i].position, 30f * Time.deltaTime);
-                            mainCamera.transform.rotation = Quaternion.RotateTowards(mainCamera.transform.rotation, playerPositions[i].rotation, 45f * Time.deltaTime);
+                            mainCamera.transform.rotation = Quaternion.RotateTowards(mainCamera.transform.rotation, playerPositions[i].rotation, 60f * Time.deltaTime);
                         }
                     }
                 }
@@ -88,7 +88,7 @@ namespace Deck
                 if (mainCamera.transform.position != playerPositions[2].position || mainCamera.transform.rotation != playerPositions[2].rotation)
                 {
                     mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, playerPositions[2].position, 30f * Time.deltaTime);
-                    mainCamera.transform.rotation = Quaternion.RotateTowards(mainCamera.transform.rotation, playerPositions[2].rotation, 45f * Time.deltaTime);
+                    mainCamera.transform.rotation = Quaternion.RotateTowards(mainCamera.transform.rotation, playerPositions[2].rotation, 60f * Time.deltaTime);
                 }
             }
         }
@@ -103,95 +103,34 @@ namespace Deck
 
         private void Update()
         {
-            if (!check)
-            {
-               /* if(players[0].MonstersInGame.Count>0) LockPlayer1();
-                if (players[1].MonstersInGame.Count > 0) LockPlayer2(); */
-            }
-            else
-            {
-                StartCoroutine(CheckAgain());
-            }
             cameraMove();
-        }
-       /* public void LockPlayer1()
-        {
-            if (players[1].MonstersInGame.Count>0){
-                for (int j = 0; j < players[0].MonstersInGame.Count; j++) {
-                    if (players[0].MonstersInGame[j].LockedMonster == null)
-                    {
-                        int pos = -1;
-                        float distance = 0f;
-                        for (int i = 0; i < players[1].MonstersInGame.Count; i++)
-                        {
-                            if (pos == -1)
-                            {
-                                pos = 0;
-                                distance = calcularDistancia(players[0].MonstersInGame[j].transform.position, players[1].MonstersInGame[i].transform.position);
-                            }
-                            if(distance> calcularDistancia(players[0].MonstersInGame[j].transform.position, players[1].MonstersInGame[i].transform.position))
-                            {
-                                pos = i;
-                                distance= calcularDistancia(players[0].MonstersInGame[j].transform.position, players[1].MonstersInGame[i].transform.position);
-                            }
-                        }
-                        players[0].MonstersInGame[j].LockEnemy(players[1].MonstersInGame[pos]);
-
-                        LockPlayer1();
-                    }
-
-                    if(players[0].MonstersInGame[j].LockedMonster != null)
-                    {
-                        if(players[0].MonstersInGame[j].LockedMonster.Health == 0)
-                        {
-                            players[0].MonstersInGame[j].LockEnemy(null);
-                            LockPlayer1();
-                        }
-                    }
-                }
-            }
-        }
-        public void LockPlayer2()
-        {
-            if (players[0].MonstersInGame.Count > 0)
+            if (startFight)
             {
-                for (int j = 0; j < players[1].MonstersInGame.Count; j++)
+                if (players[0].MonstersInGame.Count == 0 || players[1].MonstersInGame.Count == 0)
                 {
-                    if (players[1].MonstersInGame[j].LockedMonster == null)
+                    if (players[0].MonstersInGame.Count == 0)
                     {
-                        int pos = -1;
-                        float distance = 0f;
-                        for (int i = 0; i < players[0].MonstersInGame.Count; i++)
-                        {
-                            if (pos == -1)
-                            {
-                                pos = 0;
-                                distance = calcularDistancia(players[1].MonstersInGame[j].transform.position, players[0].MonstersInGame[i].transform.position);
-                            }
-                            if (distance > calcularDistancia(players[1].MonstersInGame[j].transform.position, players[0].MonstersInGame[i].transform.position))
-                            {
-                                pos = i;
-                                distance = calcularDistancia(players[1].MonstersInGame[j].transform.position, players[0].MonstersInGame[i].transform.position);
-                            }
-                        }
-                        players[1].MonstersInGame[j].LockEnemy(players[0].MonstersInGame[pos]);
-
-                        LockPlayer2();
+                        FinishGame(players[1]);
                     }
-
-                    if (players[1].MonstersInGame[j].LockedMonster != null)
+                    else
                     {
-                        if (players[1].MonstersInGame[j].LockedMonster.Health == 0)
-                        {
-                            players[1].MonstersInGame[j].LockEnemy(null);
-                            LockPlayer1();
-                        }
+                        FinishGame(players[0]);
                     }
                 }
-
-                
             }
-        }*/
+        }
+
+        private void FinishGame(Player player)
+        {
+            startFight = false;
+            combatCam = false;
+            Debug.Log("Ha ganado: " + player.SelectedPlayerType);
+            player.victorias++;
+            if (player.victorias != 2)
+            {
+                gameLoop.RunGame();
+            }
+        }
 
         public MonsterBehaviour Punch(Player player, MonsterBehaviour monsterB) 
         {
@@ -257,10 +196,6 @@ namespace Deck
                 Card newCard = cardFactory.DrawCard(player, handCardIds);
                 player.AddCard(newCard);
             }
-        }
-        private IEnumerator CheckAgain()
-        {
-            yield return new WaitForSeconds(0.25f);
         }
         private float calcularDistancia(Vector3 originPosition, Vector3 destinyPosition)
         {

@@ -18,12 +18,12 @@ namespace Deck
         private List<MonsterDC> gameMonster;
         [SerializeField]
         private int cardsToDraft;
-
         [SerializeField]
         private PlayerType playerId;
 
+        public int victorias = 0;
         public int CardsToDraft => cardsToDraft;
-
+        public PlayerType SelectedPlayerType => playerId;
         public List<Card> Hand { get; private set; } = new List<Card>();
         public List<MonsterBehaviour> MonstersInGame { get; private set; } = new List<MonsterBehaviour>();
 

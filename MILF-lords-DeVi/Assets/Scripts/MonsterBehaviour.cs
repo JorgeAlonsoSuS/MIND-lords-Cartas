@@ -24,7 +24,10 @@ namespace Deck
         public MonsterBehaviour LockedMonster => lockedMonster;
         
         public int Health => health;
-
+        public void changeHealt(int newH)
+        {
+            health = newH;
+        }
         public float AttackRadius => attackRadius;
 
         void Start()
@@ -74,7 +77,7 @@ namespace Deck
                 
         }
 
-        internal void Init(Player owner, MonsterDC monsterDC)
+        internal void Init(Player owner)
         {
             this.owner = owner;
         }
