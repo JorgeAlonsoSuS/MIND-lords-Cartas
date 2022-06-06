@@ -48,12 +48,12 @@ namespace Deck
                 {
                     Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameCamera.WorldToScreenPoint(selectedObject.transform.position).z);
                     Vector3 worldPosition = gameCamera.ScreenToWorldPoint(position);
-                    if (player==2 && worldPosition.x>-14 && worldPosition.x < 14 && worldPosition.z >=-4 && worldPosition.z < 18)
+                    if (player==2 && worldPosition.x>-15 && worldPosition.x < 15 && worldPosition.z >=-4 && worldPosition.z < 18)
                     {
                         selectedObject.transform.position = new Vector3(worldPosition.x, 0f, worldPosition.z);
                         selectedObject.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                     }
-                    else if (player == 1 && worldPosition.x > -14 && worldPosition.x < 14 && worldPosition.z <= -7 && worldPosition.z > -28)
+                    else if (player == 1 && worldPosition.x > -15 && worldPosition.x < 15 && worldPosition.z <= -7 && worldPosition.z > -28)
                     {
                         selectedObject.transform.position = new Vector3(worldPosition.x, 0f, worldPosition.z);
                     }
