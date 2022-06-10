@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using Deck.GameSteps;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Deck
 {
@@ -12,7 +13,7 @@ namespace Deck
     {
 
         public static GameManager Instance { get; private set; }
-        public Player CurrentPlayer { get; private set; }
+        public static Player CurrentPlayer { get; private set; }
 
         [SerializeField]
         private MonsterDC[] monters;
@@ -25,8 +26,6 @@ namespace Deck
 
         [SerializeField]
         public  Camera mainCamera;
-
-
 
         [SerializeField]
         private Transform[] playerPositions;
@@ -66,6 +65,7 @@ namespace Deck
             );
 
             gameLoop.RunGame();
+            DontDestroyOnLoad(gameObject);
         }
         private void cameraMove()
         {
@@ -131,6 +131,7 @@ namespace Deck
             else
             {
                 CurrentPlayer = player;
+                WinScene();
             }
         }
         public MonsterBehaviour Punch(Player player, MonsterBehaviour monsterB) 
@@ -196,6 +197,11 @@ namespace Deck
         private float calcularDistancia(Vector3 originPosition, Vector3 destinyPosition)
         {
             return Vector3.Distance(originPosition, destinyPosition);
+        }
+
+        public void WinScene()
+        {
+            SceneManager.LoadScene("Victory");
         }
     }
 }
