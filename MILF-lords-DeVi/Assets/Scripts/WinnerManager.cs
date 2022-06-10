@@ -13,7 +13,8 @@ namespace Deck {
         {
             gameManager = GameObject.Find("GameManager");
             trueGameManager = gameManager.GetComponent<GameManager>();
-            //winner = trueGameManager.GetCurrentPlayer();
+            winner = trueGameManager.GetCurrentPlayer();
+            
         }
     }
 

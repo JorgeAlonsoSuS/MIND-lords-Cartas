@@ -100,6 +100,11 @@ namespace Deck
         {
             CurrentPlayer = player;
         }
+
+        internal Player GetCurrentPlayer()
+        {
+            return CurrentPlayer;
+        }
         private void Update()
         {
             cameraMove();
