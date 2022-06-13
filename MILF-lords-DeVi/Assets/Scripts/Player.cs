@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Deck
 {
@@ -20,6 +21,8 @@ namespace Deck
         private int cardsToDraft;
         [SerializeField]
         private PlayerType playerId;
+
+        private Text playerName;
 
         public int victorias = 0;
         public int CardsToDraft => cardsToDraft;
@@ -96,6 +99,17 @@ namespace Deck
             {
                 card.ToggleInteractive(interactive);
             }
+        }
+
+        public void SetPlayerName(Text playerName)
+        {
+            this.playerName = playerName;
+            
+        }
+
+        public Text GetPlayerName()
+        {
+            return this.playerName;
         }
     }
 }
