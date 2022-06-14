@@ -6,6 +6,7 @@ using System.Linq;
 using Deck.GameSteps;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Deck
 {
@@ -218,5 +219,7 @@ namespace Deck
         {
             SceneManager.LoadScene("Victory");
         }
+
+        
     }
 }

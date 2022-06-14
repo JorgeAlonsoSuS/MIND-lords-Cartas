@@ -124,5 +124,10 @@ namespace Deck
         {
             return this.playerName;
         }
+
+        public void SetNombresTexto(Text texto)
+        {
+            texto.text = this.GetPlayerName().text;
+        }
     }
 }
