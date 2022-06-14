@@ -129,6 +129,16 @@ namespace Deck
             combatCam = false;
             Debug.Log("Ha ganado: " + player.SelectedPlayerType);
             player.victorias++;
+            if (player == players[0])
+            {
+                players[1].derrotas++;
+                players[1].ChangeShiled();
+            }
+            else
+            {
+                players[0].derrotas++;
+                players[0].ChangeShiled();
+            }
             if (player.victorias != 2)
             {
                 gameLoop.RunGame();

@@ -21,10 +21,18 @@ namespace Deck
         private int cardsToDraft;
         [SerializeField]
         private PlayerType playerId;
+        [SerializeField]
+        private Texture[] shields;
+        [SerializeField]
+        private GameObject playerShield;
+        [SerializeField]
+        private Text tName;
 
         private Text playerName;
+        private RawImage si; //Cambiar
 
         public int victorias = 0;
+        public int derrotas = 0;
         public int CardsToDraft => cardsToDraft;
         public PlayerType SelectedPlayerType => playerId;
         public List<Card> Hand { get; private set; } = new List<Card>();
@@ -38,7 +46,12 @@ namespace Deck
         void Awake()
         {
             if (cardsToDraft > gameMonster.Count) cardsToDraft = gameMonster.Count;
-            
+            si = playerShield.GetComponent<RawImage>();
+            //tName = GetPlayerName();
+        }
+        public void ChangeShiled()
+        {
+            si.texture = shields[derrotas];
         }
         public void AddCard(Card card)
         {
