@@ -24,7 +24,7 @@ namespace Deck {
             Destroy(gameManager);
             Debug.Log("Ha ganado " + winnerName);
             textPro = texto.GetComponent<TextMeshProUGUI>();
-            textPro.text = "¡Ha ganado " + winnerName! + " Tremendo Chad" ;
+            textPro.text = "¡Ha ganado " + winnerName + "!" + " Tremendo Chad" ;
             
         }
     }
