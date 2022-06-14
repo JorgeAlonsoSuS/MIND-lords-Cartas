@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -125,7 +126,7 @@ namespace Deck
             return this.playerName;
         }
 
-        public void SetNombresTexto(Text texto)
+        public void SetNombresTexto(TextMeshProUGUI texto)
         {
             texto.text = this.GetPlayerName().text;
         }
